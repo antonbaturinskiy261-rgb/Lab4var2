@@ -52,6 +52,13 @@ fun DemoScreen(modifier: Modifier = Modifier) {
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            text = "Lab02 — Циклы",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 30.dp)
+        )
+
         OutlinedTextField(
             value = input,
             onValueChange = { input = it },
@@ -59,7 +66,7 @@ fun DemoScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Button(onClick = {
             val x = input.toDoubleOrNull()
@@ -101,13 +108,13 @@ fun DemoScreen(modifier: Modifier = Modifier) {
 
         Text(
             text = result,
-            fontSize = 20.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.Bold
         )
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DemoScreenPreview() {
     Lab4var2Theme {
