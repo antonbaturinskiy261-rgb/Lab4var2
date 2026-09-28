@@ -61,7 +61,29 @@ fun DemoScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Button(onClick = {
-            // Логика будет добавлена в следующем коммите
+            val x = input.toDoubleOrNull()
+            result = if (x == null || x == 0.0) {
+                "Введите корректное число x"
+            } else {
+                val eps = 0.0001
+                var sum = 0.0
+                var term = 1.0
+                var n = 1
+                var sign = 1
+                var iterations = 0
+
+                while (true) {
+                    val power = 2 * n - 1
+                    term = sign * 1.0 / (power * Math.pow(x, power.toDouble()))
+                    if (Math.abs(term) < eps) break
+                    sum += term
+                    sign = -sign
+                    n++
+                    iterations++
+                }
+
+                "Сумма: $sum\nПоследнее слагаемое: $term\nИтераций: $iterations"
+            }
         }) {
             Text("Вычислить")
         }
