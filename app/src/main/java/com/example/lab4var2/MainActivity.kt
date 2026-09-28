@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -82,7 +83,15 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                     iterations++
                 }
 
-                "Сумма: $sum\nПоследнее слагаемое: $term\nИтераций: $iterations"
+                buildString {
+                    appendLine("Сумма:")
+                    appendLine(sum)
+                    appendLine()
+                    appendLine("Последнее слагаемое:")
+                    appendLine(term)
+                    appendLine()
+                    append("Итераций: $iterations")
+                }
             }
         }) {
             Text("Вычислить")
@@ -90,7 +99,11 @@ fun DemoScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(text = result, fontSize = 20.sp)
+        Text(
+            text = result,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
